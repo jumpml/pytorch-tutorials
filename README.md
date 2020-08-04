@@ -1,3 +1,3 @@
 # pytorch-tutorials
 
-PyTorch code and tutorials published on [JumpML blog](jumpml.com)
+PyTorch code and tutorials published on [JumpML blog](https://jumpml.com)
