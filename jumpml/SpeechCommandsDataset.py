@@ -52,7 +52,7 @@ class SpeechCommandsData:
 
         # Setup transforms (separate for train, test and val if necessary)
         self.transform = torch.nn.Sequential(
-            torchaudio.transforms.MelSpectrogram(sample_rate=16000, n_fft=256, hop_length=128, n_mels=n_mels),
+            torchaudio.transforms.MelSpectrogram(sample_rate=16000, n_fft=320, hop_length=160, n_mels=n_mels),
             torchaudio.transforms.AmplitudeToDB(stype='power', top_db=80))
 
         # Cleanup background files if needed
