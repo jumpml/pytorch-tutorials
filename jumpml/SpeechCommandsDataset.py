@@ -55,6 +55,14 @@ class SpeechCommandsData:
             torchaudio.transforms.MelSpectrogram(sample_rate=16000, n_fft=320, hop_length=160, n_mels=n_mels),
             torchaudio.transforms.AmplitudeToDB(stype='power', top_db=80))
 
+        self.train_transform = torch.nn.Sequential(
+            torchaudio.transforms.MelSpectrogram(sample_rate=16000, n_fft=320, hop_length=160, n_mels=n_mels),
+            torchaudio.transforms.FrequencyMasking(freq_mask_param=15),
+            torchaudio.transforms.TimeMasking(time_mask_param=35),
+            torchaudio.transforms.AmplitudeToDB(stype='power', top_db=80))
+
+
+
         # Cleanup background files if needed
         backgroundDir = os.path.join(
             path, 'SpeechCommands', 'speech_commands_v0.02', 'background')
@@ -66,7 +74,7 @@ class SpeechCommandsData:
         # Create separate datasets (or filelist iterators) for train, test and val
         print('Initialize/download SpeechCommandsDataset....\n')
         self.train_dataset = SpeechCommandsDataset(
-            path=path, transform=self.transform)
+            path=path, transform=self.train_transform)
         self.val_dataset = SpeechCommandsDataset(
             path=path, transform=self.transform)
         self.test_dataset = SpeechCommandsDataset(
