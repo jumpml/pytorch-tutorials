@@ -57,8 +57,8 @@ class SpeechCommandsData:
 
         self.train_transform = torch.nn.Sequential(
             torchaudio.transforms.MelSpectrogram(sample_rate=16000, n_fft=320, hop_length=160, n_mels=n_mels),
-            torchaudio.transforms.FrequencyMasking(freq_mask_param=15),
-            torchaudio.transforms.TimeMasking(time_mask_param=35),
+            torchaudio.transforms.FrequencyMasking(freq_mask_param=int(n_mels*0.2)),
+            torchaudio.transforms.TimeMasking(time_mask_param=int(0.2 * 16000/160)),
             torchaudio.transforms.AmplitudeToDB(stype='power', top_db=80))
 
 
