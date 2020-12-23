@@ -6,6 +6,11 @@ import glob
 import matplotlib.pyplot as plt
 
 def get_fileList(dataset_path, filename):
+    '''
+    Given a file (filename) with a column of filenames, return a list of those files
+    dataset_path: directory
+    filename: file with column of file names
+    '''
     with open(os.path.join(dataset_path, filename)) as f:
         fileList = f.read().split("\n")
 
