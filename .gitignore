@@ -1,0 +1,10 @@
+*.tar.gz
+.DS_Store
+
+
+SpeechCommands/
+__pycache__/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints

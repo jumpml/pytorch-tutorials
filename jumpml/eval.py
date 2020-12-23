@@ -49,4 +49,4 @@ class evalModel():
     accuracy = 100. * correct / len(dataloader.dataset)
     print(f'\nAvg. loss: {loss:.4f}, Accuracy: {accuracy} %  Elapsed Time={elapsed_time}\n')
     cm = confusion_matrix(predictions.numpy(), labels.numpy())
-    return(accuracy, cm)
+    return(accuracy.cpu().numpy(), cm)
